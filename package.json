@@ -1,0 +1,86 @@
+{
+  "name": "rubick",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-plugin-module-alias": "^1.6.0",
+    "decimal.js": "^10.0.1",
+    "flux-standard-action": "^2.0.3",
+    "prop-types": "^15.6.1",
+    "react": "16.3.1",
+    "react-native": "0.55.4",
+    "react-native-extended-stylesheet": "^0.8.1",
+    "react-navigation": "^2.0.4",
+    "react-navigation-redux-helpers": "^1.1.1",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-actions": "^2.4.0",
+    "redux-axios-middleware": "^4.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.0",
+    "babel-preset-react-native-stage-0": "^1.0.1",
+    "cz-conventional-changelog": "^2.0.0",
+    "eslint": "^4.7.1",
+    "eslint-config-prettier": "^2.5.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "husky": "^0.14.3",
+    "jest-expo": "~20.0.0",
+    "jsdoc": "^3.5.5",
+    "prettier": "^1.8.2",
+    "react-test-renderer": "16.0.0-alpha.12",
+    "tmp": "^0.0.31",
+    "uglify-js": "^2.8.28",
+    "validate-commit-msg": "^2.14.0"
+  },
+  "scripts": {
+    "configureJPush": "node node_modules/jpush-react-native/JPushConfiguration.js",
+    "commitmsg": "validate-commit-msg",
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "log-android": "adb logcat *:S ReactNative:V ReactNativeJS:V",
+    "ios": "react-native run-ios --simulator 'iPhone 8'",
+    "pbjs": "pbjs -t static-module ./src/utils/protobufData/quote_pb_dto.proto > ./src/utils/protobufData/quote_pb_dto.js",
+    "icon": "node ./LeanWorkFontIcon/creatIconMap",
+    "test": "node node_modules/jest/bin/jest.js --watch"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "perf",
+        "test",
+        "chore",
+        "revertyarn",
+        "build"
+      ],
+      "scope": {
+        "required": false,
+        "allowed": [
+          "component",
+          "action",
+          "reducer"
+        ],
+        "validate": false,
+        "multiple": false
+      },
+      "warnOnFail": false,
+      "maxSubjectLength": 100,
+      "subjectPattern": ".+",
+      "subjectPatternErrorMsg": "subject does not match subject pattern!",
+      "helpMessage": "",
+      "autoFix": false
+    }
+  }
+}
