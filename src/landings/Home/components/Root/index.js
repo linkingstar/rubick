@@ -1,39 +1,51 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
+import { SectionList, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
 import styles from './styles';
 import BaseComponent from '@/components/BaseComponent';
 import MainTabBar from '@/components/MainTabBar';
+import i18n from '@/utils/i18n';
+import ProductCell from './ProductCell';
 
 export default class Home extends BaseComponent {
   constructor(props) {
     super(props);
     this.state = {};
+    this.sections = [{ title: '', data: [] }];
   }
 
   componentDidMount() {
-    const { setParams } = this.props;
-    setParams('react native');
-
-    this.timer = setTimeout(() => {
-      this._navigateToMainPage();
-    }, 3000);
+    const { getProducts } = this.props;
+    getProducts();
   }
 
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
+  _renderHeader = () => {
+    return (
+      <View style={styles.header}>
+        <Text style={styles.title}>{i18n['home.title']}</Text>
+      </View>
+    );
+  };
 
-  _navigateToMainPage = () => {};
+  _keyExtractor = (item, index) => index;
+
+  _renderItem = ({ item }) => {
+    return <ProductCell {...item} />;
+  };
 
   render() {
-    const { navigation } = this.props;
+    const { products } = this.props;
     return (
-      <View style={styles.container}>
-        <View style={styles.list}>
-          <Text>首页</Text>
-        </View>
+      <SafeAreaView style={styles.container}>
+        <SectionList
+          style={styles.list}
+          keyExtractor={this._keyExtractor}
+          renderSectionHeader={this._renderHeader}
+          renderItem={this._renderItem}
+          sections={products}
+        />
         <MainTabBar />
-      </View>
+      </SafeAreaView>
     );
   }
 }

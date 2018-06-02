@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { SET_PARAMS, GET_ORDER_RESULT } from './actions';
+import { GET_PRODUCTS, SET_PARAMS } from './actions';
 
 export const params = handleActions(
   {
@@ -9,11 +9,9 @@ export const params = handleActions(
   {}
 );
 
-export const orderResult = handleActions(
+export const products = handleActions(
   {
-    [GET_ORDER_RESULT]: (state, { payload }) => {
-      return payload;
-    }
+    [GET_PRODUCTS]: (state, { payload }) => [{ data: payload }]
   },
-  0
+  [{ data: [] }]
 );

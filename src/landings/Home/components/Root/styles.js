@@ -4,7 +4,16 @@ import { Dimensions } from 'react-native';
 const styles = EStyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '$backgroundColor'
+    backgroundColor: 'white'
+  },
+  title: {
+    fontSize: 28,
+    margin: 15,
+    fontWeight: 'bold',
+    color: '$textColorDark'
+  },
+  header: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)'
   },
   textStyle: {
     fontSize: 18,
@@ -19,6 +28,10 @@ const styles = EStyleSheet.create({
   },
   list: {
     flex: 1
+  },
+  line: {
+    width: '100%',
+    height: '$borderWidth'
   }
 });
 
